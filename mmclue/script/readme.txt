@@ -1,0 +1,1 @@
+0 2 * * * /home/xxm/dockerpath/https/mmclue/script/auto_exe.sh
