@@ -17,5 +17,10 @@ services:
       # - ./empty.conf:/etc/nginx/conf.d/redirector.conf:ro # 覆盖原有的
       - ./user_conf.d:/etc/nginx/user_conf.d # or a host mount with a relative or full path.
       - ./html:/usr/share/nginx/html
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
 volumes:
   nginx_secrets:
