@@ -1,9 +1,12 @@
 #!/bin/bash
-
-PROJECT_DIR="/home/xxm/dockerpath/https/mmclue"
+# 获取脚本所在目录
+SCRIPT_DIR=$(cd "$(dirname "$0")" && pwd)
+# 项目根目录
+PROJECT_DIR="$SCRIPT_DIR/../.."
+# 其他路径
 COMPOSE_FILE="$PROJECT_DIR/docker-compose.yml"
 IMAGE_NAME="jonasal/nginx-certbot"
-LOG_FILE="$PROJECT_DIR/script/logs/mm_nginx_update.log"
+LOG_FILE="$SCRIPT_DIR/logs/mm_nginx_update.log"
 
 cd "$PROJECT_DIR" || exit 1
 
