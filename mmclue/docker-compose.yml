@@ -3,7 +3,7 @@ version: "3"
 services:
   nginx:
     image: jonasal/nginx-certbot:latest
-    restart: unless-stopped
+    restart: no
     environment:
       - CERTBOT_EMAIL
     env_file:
