@@ -24,8 +24,8 @@ new_id=$(docker images -q "${IMAGE_NAME}:latest")
 if [ "$old_id" != "$new_id" ]; then
   echo "$(date '+%F %T') - 镜像已更新，重启服务 ..." | tee -a "$LOG_FILE"
   
-  # 重启服务
-  docker-compose -f "$COMPOSE_FILE" down 2>&1 | tee -a "$LOG_FILE"
+  # 重启服务, 不修改compose.yml时,不需要down
+  # docker-compose -f "$COMPOSE_FILE" down 2>&1 | tee -a "$LOG_FILE"
   docker-compose -f "$COMPOSE_FILE" up -d 2>&1 | tee -a "$LOG_FILE"
 
   # 清理无标签的旧镜像
