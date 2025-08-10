@@ -2,7 +2,7 @@
 # 获取脚本所在目录
 SCRIPT_DIR=$(cd "$(dirname "$0")" && pwd)
 # 项目根目录
-PROJECT_DIR="$SCRIPT_DIR/../.."
+PROJECT_DIR="$SCRIPT_DIR/.."
 # 其他路径
 COMPOSE_FILE="$PROJECT_DIR/docker-compose.yml"
 IMAGE_NAME="jonasal/nginx-certbot"
