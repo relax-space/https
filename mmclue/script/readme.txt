@@ -8,8 +8,12 @@ crontab -l
 
 ```
 git config core.filemode true
-git update-index --chmod=+x mmclue/script/auto_exe.sh
-git update-index --chmod=+x mmclue/script/mm_nginx_update.sh
+git add --chmod=+x mmclue/script/auto_exe.sh mmclue/script/mm_nginx_update.sh
+git commit -m "更新文件执行权限"
+
+git config core.filemode false
+
+
 验证权限生效
 git ls-files --stage mmclue/script/mm_nginx_update.sh
 ```
