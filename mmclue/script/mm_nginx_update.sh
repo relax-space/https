@@ -16,7 +16,7 @@ echo "$(date '+%F %T') - 开始更新 $IMAGE_NAME" | tee -a "$LOG_FILE"
 old_id=$(docker images -q "${IMAGE_NAME}:latest")
 
 # 拉取最新镜像
-docker pull "$IMAGE_NAME" 2>&1 | tee -a "$LOG_FILE"
+docker pull --no-cache "$IMAGE_NAME" 2>&1 | tee -a "$LOG_FILE"
 
 # 获取新镜像 ID
 new_id=$(docker images -q "${IMAGE_NAME}:latest")
@@ -26,7 +26,7 @@ if [ "$old_id" != "$new_id" ]; then
   
   # 重启服务, 不修改compose.yml时,不需要down
   # docker-compose -f "$COMPOSE_FILE" down 2>&1 | tee -a "$LOG_FILE"
-  docker-compose -f "$COMPOSE_FILE" up -d 2>&1 | tee -a "$LOG_FILE"
+  docker-compose -f "$COMPOSE_FILE" up -d --force-recreate 2>&1 | tee -a "$LOG_FILE"
 
   # 清理无标签的旧镜像
   echo "$(date '+%F %T') - 清理无标签的旧镜像 ..." | tee -a "$LOG_FILE"
