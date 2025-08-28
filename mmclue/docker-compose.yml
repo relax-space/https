@@ -13,8 +13,6 @@ services:
       - 443:443
     volumes: # Storage can be either a
       - nginx_secrets:/etc/letsencrypt # Docker managed volume (see list at the bottom)
-      - ./empty:/etc/nginx/conf.d # 覆盖原有的
-      # - ./empty.conf:/etc/nginx/conf.d/redirector.conf:ro # 覆盖原有的
       - ./user_conf.d:/etc/nginx/user_conf.d # or a host mount with a relative or full path.
       - ./html:/usr/share/nginx/html
     logging:
